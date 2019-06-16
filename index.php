@@ -81,6 +81,7 @@
         </div>
     </div>
     <!-- End of Cart -->
+
     <script src="app.js"></script>
 
 </body>

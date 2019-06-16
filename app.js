@@ -69,30 +69,28 @@ class UI{
                 button.innerText = "In Cart";
                 button.disabled = true;
             }
-            else{
-                button.addEventListener('click', (event) => {
-                    event.target.innerText = "In Cart";
-                    event.target.disabled = true;
-                    // get product from products
-                    let cartItem = {...Storage.getProduct(id), amount:1};
+            button.addEventListener('click', event => {
+                event.target.innerText = "In Cart";
+                event.target.disabled = true;
+                // get product from products
+                let cartItem = { ...Storage.getProduct(id), amount:1 };
 
-                    // add product to the cart
-                    cart = [...cart, cartItem];
+                // add product to the cart
+                cart = [...cart, cartItem];
 
-                    // save cart in local storage
-                    Storage.saveCart(cart);
+                // save cart in local storage
+                Storage.saveCart(cart);
 
-                    // set cart values
-                    this.setCartValues(cart);
+                // set cart values
+                this.setCartValues(cart);
 
-                    // add cart item
-                    this.addCartItem(cartItem);
-                    // display cart item
-                    this.showCart();
-                    // show the cart
-                })
-            }
-        })
+                // add cart item
+                this.addCartItem(cartItem);
+                // display cart item
+                this.showCart();
+                // show the cart
+            });
+        });
     }
     setCartValues(cart){
         let temTotal = 0;
@@ -181,14 +179,13 @@ class UI{
                     this.setCartValues(cart);
                     lowerAmount.previousElementSibling.innerText = tempItem.amount;
                 }
+                else{
+                    cartContent.removeChild(lowerAmount.parentElement.parentElement);
+                    this.removeItem(id);
+                }
             }
-            else{
-                cartContent.removeChild(lowerAmount.parentElement.parentElement);
-                this.removeItem(id);
-            }
-        })
-
-    }
+        });
+       }
 
     clearCart(){
         let cartItems = cart.map(item => item.id);
@@ -204,9 +201,7 @@ class UI{
         Storage.saveCart(cart);
         let button = this.getSingleButton(id);
         button.disabled = false;
-        button.innerHTML = `
-        <i class = "fas fa-shopping-cart"></i>add to cart
-        `;
+        button.innerHTML = `<i class = "fas fa-shopping-cart"></i>add to cart`;
     }
 
     getSingleButton(id){
