@@ -37,6 +37,7 @@ class Products{
 
 // display products
 class UI{
+
     displayProducts(products){
         let result = '';
         products.forEach(product => {

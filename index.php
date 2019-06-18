@@ -19,6 +19,19 @@
                 <i class="fas fa-bars"></i>
             </span>
             <img src="images/logo.svg" alt="store logo" />
+
+            <div class="dropdown">
+                <span class="nav-icon">
+                    <button class="dropbtn">
+                    <i class="fas fa-user"></i>
+                    </button>
+                </span>
+                <ul class="dropdown-menu">
+                    <li><a href="login.php">Login</a></li>
+                    <li><a href="#">Log Out</a> </li>
+                </ul>
+            </div>
+
             <div class="cart-btn">
                 <span class="nav-icon">
                     <i class="fas fa-cart-plus"></i>
@@ -82,7 +95,7 @@
     </div>
     <!-- End of Cart -->
 
-    <script src="app.js"></script>
+    <script src="js/app.js"></script>
 
 </body>
 </html>
