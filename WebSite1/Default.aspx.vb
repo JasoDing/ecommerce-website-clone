@@ -11,8 +11,6 @@ Partial Class _Default
 
     Private Sub BindGrid()
         Dim service As New GetUserInfo.WebService()
-        GridView1.DataSource = service.UserInfo()
-        GridView1.DataBind()
     End Sub
 
 End Class

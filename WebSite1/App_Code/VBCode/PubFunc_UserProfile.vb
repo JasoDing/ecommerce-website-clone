@@ -21,6 +21,16 @@ Public Class PubFunc_UserProfile
     End Function
 
 
+    Public Shared Sub ASPNET_MsgBoxAlert(ByVal Message As String)
+
+        System.Web.HttpContext.Current.Response.Write("<SCRIPT LANGUAGE=""JavaScript"">" & vbCrLf)
+
+        System.Web.HttpContext.Current.Response.Write("alert(""" & Message & """)" & vbCrLf)
+
+        System.Web.HttpContext.Current.Response.Write("</SCRIPT>")
+
+    End Sub
+
     Public Shared Sub SelectMultipleBySQL(ByVal SQLStr As String, ByVal ConnStr As String, ByVal ParaCount As Integer, Optional ByRef Rtn1 As String = "", Optional ByRef Rtn2 As String = "", Optional ByRef Rtn3 As String = "", Optional ByRef Rtn4 As String = "", Optional ByRef Rtn5 As String = "", Optional ByRef Rtn6 As String = "", Optional ByRef Rtn7 As String = "", Optional ByRef Rtn8 As String = "", Optional ByRef Rtn9 As String = "", Optional ByRef Rtn10 As String = "", Optional ByRef Rtn11 As String = "", Optional ByRef Rtn12 As String = "", Optional ByRef Rtn13 As String = "", Optional ByRef Rtn14 As String = "", Optional ByRef Rtn15 As String = "", Optional ByRef Rtn16 As String = "", Optional ByRef Rtn17 As String = "", Optional ByRef Rtn18 As String = "", Optional ByRef Rtn19 As String = "", Optional ByRef Rtn20 As String = "", Optional ByRef Rtn21 As String = "", Optional ByRef Rtn22 As String = "", Optional ByRef Rtn23 As String = "", Optional ByRef Rtn24 As String = "", Optional ByRef Rtn25 As String = "")
 
         Dim rootWebConfig As System.Configuration.Configuration
