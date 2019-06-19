@@ -245,3 +245,28 @@ document.addEventListener("DOMContentLoaded", ()=>{
         ui.cartLogic();
     })
 });
+
+
+
+
+function getUserProfile() {
+    $.ajax({
+        type: "post",
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        url: "./WebSite1/App_Code/VBCode/PubFunc_UserProfile",
+        // url: "http://localhost:54322/WebService.asmx",
+        contentType: "application/json; charset=utf-8",
+        data: {},
+        dataType: "json",
+        success: function(data){
+            console.log(data)
+        },
+        failure: function (response) {
+            alert(response.d)
+        }
+    });
+}
+
+console.log(getUserProfile());

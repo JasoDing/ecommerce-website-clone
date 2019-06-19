@@ -98,28 +98,7 @@
     </div>
     <!-- End of Cart -->
 
-    <script src="js/app.js"></script>
-
-    <script type="text/javascript">   
-        //Called this method on any button click  event for Testing
-        function MyFunction(Param1, Param2) {                                               
-        $.ajax({
-            type: "POST",
-            url: "http://localhost:54322/WebService.asmx",
-            data: "{ Param1: '" + Param1+ "',Param2: '" + Param2 + "'}",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            async: "true",
-            cache: "false",
-            success: function (msg) {
-                // On success                 
-            },
-            Error: function (x, e) {
-                // On Error
-            }
-        });
-    }  
-    </script>  
+    <script src="js/app.js"></script> 
 
 </body>
 </html>
