@@ -18,6 +18,8 @@ Public Class PubFunc_UserProfile
 
         SelectMultipleBySQL(SQLstr, "userLogin", 1, user_info)
 
+        Return User_Profile
+
     End Function
 
 
@@ -26,7 +28,7 @@ Public Class PubFunc_UserProfile
         System.Web.HttpContext.Current.Response.Write("<SCRIPT LANGUAGE=""JavaScript"">" & vbCrLf)
 
         System.Web.HttpContext.Current.Response.Write("alert(""" & Message & """)" & vbCrLf)
-
+         
         System.Web.HttpContext.Current.Response.Write("</SCRIPT>")
 
     End Sub
