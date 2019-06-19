@@ -9,10 +9,8 @@ body{
     background: rgba(44, 62, 80, 0.7);
     padding: 40px;
     width: 250px;
-    margin: auto;
-    margin-top: 80px;
     height: 400px;
-    margin-left: 180px;
+    margin: 80px auto auto auto;
 }
 
 form{
@@ -28,8 +26,8 @@ input[type=text]{
     border-bottom: 1px solid #fff;
     font-family: 'Play', sans-serif;
     font-size: 16px;
-    font-weight: 200px;
-    padding: 100px 0;
+    font-weight: normal;
+    padding: 10px 0;
     transition: border 0.5s;
     outline: none;
     color: #fff;
@@ -50,6 +48,15 @@ input[type=button]{
 input[type=button]:hover{
     color: #fff;
     background-color: black;
+}
+
+h2{
+    color: white;
+}
+
+a{
+    color: yellow;
+    text-decoration: blink;
 }
 
 a:hover{
