@@ -251,12 +251,12 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 function getUserProfile() {
     $.ajax({
-        type: "get",
+        type: "GET",
         // url: "./WebSite1/App_Code/VBCode/PubFunc_UserProfile",
-        url: "http://localhost:54322/WebService.asmx/UserInfo",
+        url: "http://localhost:54322/WebService.asmx",
         contentType: "application/json; charset=utf-8",
         data: {},
-        dataType: "json",
+        dataType: "xml",
         success: function(data){
             console.log(data)
         },
