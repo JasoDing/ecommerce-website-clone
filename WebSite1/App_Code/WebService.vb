@@ -6,11 +6,13 @@ Imports System.Configuration
 Imports System.Data.SqlClient
 
 ' To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line.
-' <System.Web.Script.Services.ScriptService()> _
+'<System.Web.Script.Services.ScriptService()> _
 
-<WebService(Namespace:="http://tempuri.org/")> _
-<WebServiceBinding(ConformsTo:=WsiProfiles.BasicProfile1_1)> _
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+
+<WebService(Namespace:="http://tempuri.org/")>
+<WebServiceBinding(ConformsTo:=WsiProfiles.BasicProfile1_1)>
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+<System.Web.Script.Services.ScriptService()>
 Public Class WebService
     Inherits System.Web.Services.WebService
 
