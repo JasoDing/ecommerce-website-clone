@@ -2,7 +2,7 @@
 
 Public Class PubClass
     Public Class user_profile
-        Public person_id As Integer
+        Public person_id As String
         Public username As String
         Public password As String
         Public last_name As String
