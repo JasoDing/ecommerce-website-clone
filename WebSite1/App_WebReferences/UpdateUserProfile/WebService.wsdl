@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="get_User_Profile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="person_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="last_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="first_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="errormsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_User_ProfileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_User_ProfileResult" type="tns:ArrayOfUser_profile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUser_profile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="user_profile" nillable="true" type="tns:user_profile" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="user_profile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="person_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="last_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="first_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="email_address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="update_User_Profile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="person_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="last_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="first_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="In_Error" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="errormsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="update_User_ProfileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="In_Error" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="get_User_ProfileSoapIn">
+    <wsdl:part name="parameters" element="tns:get_User_Profile" />
+  </wsdl:message>
+  <wsdl:message name="get_User_ProfileSoapOut">
+    <wsdl:part name="parameters" element="tns:get_User_ProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="update_User_ProfileSoapIn">
+    <wsdl:part name="parameters" element="tns:update_User_Profile" />
+  </wsdl:message>
+  <wsdl:message name="update_User_ProfileSoapOut">
+    <wsdl:part name="parameters" element="tns:update_User_ProfileResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceSoap">
+    <wsdl:operation name="get_User_Profile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">get info</wsdl:documentation>
+      <wsdl:input message="tns:get_User_ProfileSoapIn" />
+      <wsdl:output message="tns:get_User_ProfileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="update_User_Profile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">update info</wsdl:documentation>
+      <wsdl:input message="tns:update_User_ProfileSoapIn" />
+      <wsdl:output message="tns:update_User_ProfileSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="get_User_Profile">
+      <soap:operation soapAction="http://tempuri.org/get_User_Profile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update_User_Profile">
+      <soap:operation soapAction="http://tempuri.org/update_User_Profile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="get_User_Profile">
+      <soap12:operation soapAction="http://tempuri.org/get_User_Profile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update_User_Profile">
+      <soap12:operation soapAction="http://tempuri.org/update_User_Profile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port name="WebServiceSoap" binding="tns:WebServiceSoap">
+      <soap:address location="http://localhost:50648/WebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceSoap12" binding="tns:WebServiceSoap12">
+      <soap12:address location="http://localhost:50648/WebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

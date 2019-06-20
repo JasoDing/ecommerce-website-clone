@@ -74,9 +74,20 @@ Public Class WebService
     End Function
 
     <WebMethod(Description:="update info")>
-    Public Function update_User_Profile(ByVal person_id As String, ByVal username As String, ByVal password As String, ByVal last_name As String, ByVal first_name As String, ByVal email As String, ByVal address As String, ByVal city As String, ByVal errormsg As String) As List(Of user_profile)
+    Public Sub update_User_Profile(ByVal person_id As String, ByVal username As String, ByVal password As String, ByVal last_name As String, ByVal first_name As String, ByVal email As String, ByVal address As String, ByVal city As String, ByRef In_Error As Boolean, ByVal errormsg As String)
 
-    End Function
+        Dim SQLstr As String = ""
+        Dim RtnInt As Integer
+
+        SQLstr = "Insert Users( PersonID, Username, Password, LastName, FirstName, Email, Address, City) Values ('" & person_id & "', '" & username & "', '" & password & "', '" & last_name & "', '" & first_name & "', '" & email & "', '" & address & "','" & city & "')"
+
+        RtnInt = InsertDeleteUpdateRowBySQL(SQLstr, "userLogin", errormsg)
+        If RtnInt = -1 Then
+            In_Error = True
+            Exit Sub
+        End If
+
+    End Sub
     Public Shared Sub ASPNET_MsgBoxAlert(ByVal Message As String)
 
         System.Web.HttpContext.Current.Response.Write("<SCRIPT LANGUAGE=""JavaScript"">" & vbCrLf)
@@ -169,4 +180,38 @@ Public Class WebService
         End If
 
     End Sub
+
+
+
+    Public Shared Function InsertDeleteUpdateRowBySQL(ByVal SQLStr As String, ByVal ConnStr As String, Optional ByRef errorMsg As String = "") As Integer
+        Dim rootWebConfig As System.Configuration.Configuration
+        Dim RowAffected As Integer = 0
+        SQLStr = SQLStr.Replace("--", "")
+        'If SQLStr.Contains("--") Then
+        '    errorMsg = "Invalid input: '--'"
+        '    Return -1
+        'End If
+
+        rootWebConfig = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~/")
+
+        If (0 < rootWebConfig.ConnectionStrings.ConnectionStrings.Count) Then
+            Dim connString As System.Configuration.ConnectionStringSettings
+            connString = rootWebConfig.ConnectionStrings.ConnectionStrings(ConnStr)
+
+            Using connection As New SqlConnection(connString.ConnectionString)
+                connection.Open()
+                Dim command As New SqlCommand(SQLStr, connection)
+
+                Try
+                    RowAffected = command.ExecuteNonQuery()
+                Catch except As Exception
+                    RowAffected = -1  'return -1 as failed.
+                    errorMsg = except.Message
+                End Try
+
+            End Using 'auto close ado.net connection
+        End If
+
+        Return RowAffected
+    End Function
 End Class
