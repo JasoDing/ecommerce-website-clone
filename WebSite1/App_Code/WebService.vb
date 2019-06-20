@@ -74,20 +74,37 @@ Public Class WebService
     End Function
 
     <WebMethod(Description:="update info")>
-    Public Sub update_User_Profile(ByVal person_id As String, ByVal username As String, ByVal password As String, ByVal last_name As String, ByVal first_name As String, ByVal email As String, ByVal address As String, ByVal city As String, ByRef In_Error As Boolean, ByVal errormsg As String)
-
+    Public Function update_User_Profile() As String
+        Dim errormsg As String = ""
+        'Dim a As String = "5"
+        'person_id = a
         Dim SQLstr As String = ""
-        Dim RtnInt As Integer
+        ''Dim RtnInt As Integer
+        'Dim rowsAffected As Integer
+        SQLstr = "Insert into Users( PersonID, Username, Password, LastName, FirstName, Email, Address, City) Values ('6', ' Mik666kku ', '123122666223', 'Hasum6ek', 'Mikku6', 'Mikk6u@gmail.com', 'bcdk st','Ykork')"
+        InsertDeleteUpdateRowBySQL(SQLstr, "userLogin", errormsg)
+        'rowsAffected = InsertDeleteUpdateRowBySQL(SQLstr, "userLogin", errormsg)
+        'If rowsAffected >= 1 Then
+        '    Return "Done"
+        'End If
+        'If RtnInt = -1 Then
+        '    In_Error = True
+        '    Return "NOT Done"
+        '    Exit Function
+        'End If
+        Return "Done"
+    End Function
 
-        SQLstr = "Insert Users( PersonID, Username, Password, LastName, FirstName, Email, Address, City) Values ('" & person_id & "', '" & username & "', '" & password & "', '" & last_name & "', '" & first_name & "', '" & email & "', '" & address & "','" & city & "')"
+    <WebMethod(Description:="Hello??")>
+    Public Function HelloWorld() As String
 
-        RtnInt = InsertDeleteUpdateRowBySQL(SQLstr, "userLogin", errormsg)
-        If RtnInt = -1 Then
-            In_Error = True
-            Exit Sub
-        End If
+        Dim errormsg As String = ""
+        Dim SQLstr As String = ""
+        SQLstr = "Insert into Users( PersonID, Username, Password, LastName, FirstName, Email, Address, City) Values ('5', ' Mikkku ', '123122223', 'Hasumek', 'Mikku', 'Mikku@gmail.com', 'bcdk st','Ykork')"
+        InsertDeleteUpdateRowBySQL(SQLstr, "userLogin", errormsg)
+        Return "Hello World"
+    End Function
 
-    End Sub
     Public Shared Sub ASPNET_MsgBoxAlert(ByVal Message As String)
 
         System.Web.HttpContext.Current.Response.Write("<SCRIPT LANGUAGE=""JavaScript"">" & vbCrLf)
